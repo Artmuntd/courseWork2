@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Main {
  private  static  Calendar calendar;
+
         public static void main(String[] args) {
             calendar = new Calendar();
             try (Scanner scanner = new Scanner(System.in)) {
@@ -22,7 +23,7 @@ public class Main {
                                 inputTask(scanner);
                                 break;
                             case 2:
-                                // todo: обрабатываем пункт меню 2
+                               deleteTask(scanner);
                                 break;
                             case 3:
                                getTaskDay(scanner);
@@ -92,9 +93,19 @@ public class Main {
 
                 }
                   calendar.addTask(tasks);
-                  calendar.removeTask(tasks.getId());
-            }
 
+            }
+            public  static  void  deleteTask(Scanner scanner){
+                scanner.nextLine();
+                System.out.println("введите id: ");
+                int id = scanner.nextInt();
+                calendar.removeTask(id);
+
+
+
+
+
+            }
             public  static  void getTaskDay(Scanner scanner) {
                 scanner.nextLine();
                 System.out.println("Введите дату");
@@ -111,6 +122,8 @@ public class Main {
                 }
                 System.out.println(calendar.getResult(date));
             }
+
+
 
             private static void printMenu () {
                     System.out.println(

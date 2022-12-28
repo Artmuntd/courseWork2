@@ -12,16 +12,20 @@ public class Calendar {
     }
 
     public  void  removeTask(int id){
-        tasksMap.remove(id);
+        if(tasksMap.containsKey(id)){
+            tasksMap.remove(id);
+        }
+
     }
     public List<Tasks> getResult(LocalDate date) {
 
         List<Tasks> result = new ArrayList<>();
        for(Map.Entry<Integer, Tasks> entry: tasksMap.entrySet()){
-           if(entry.getValue() instanceof  Repeatability
-           && ((Repeatability)entry.getValue()).checkDate(date) || entry.getValue().getDateTime().toLocalDate().equals(date)){
+           if (entry.getValue() instanceof Repeatability
+                   && ((Repeatability) entry.getValue()).checkDate(date) || entry.getValue().getDateTime().toLocalDate().equals(date)) {
                result.add(entry.getValue());
            }
+
            }
 
         result.sort(Comparator.comparing(Tasks::getDateTime));

@@ -62,7 +62,7 @@ public class Tasks {
 
     @Override
     public String toString() {
-        return "Tasks{" +
+        return "Tasks{" + id + " " +
                 "Название='" + title + '\'' +
                 ", Описание='" + description + '\'' +
                 ", тип=" + work +
